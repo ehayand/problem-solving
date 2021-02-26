@@ -2,7 +2,7 @@ package com.ehay.problemsolving.leetcode;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class Solution1Test {
 
@@ -14,7 +14,7 @@ public class Solution1Test {
 
         int[] nums2 = new int[]{3, 2, 4};
         int target2 = 6;
-        int[] result2 = new int[]{1,2};
+        int[] result2 = new int[]{1, 2};
 
         int[] nums3 = new int[]{1, 2, 3};
         int target3 = 0;
@@ -25,21 +25,5 @@ public class Solution1Test {
         assertArrayEquals(result1, solution1.twoSum(nums1, target1));
         assertArrayEquals(result2, solution1.twoSum(nums2, target2));
         assertArrayEquals(result3, solution1.twoSum(nums3, target3));
-    }
-
-    @Test
-    void twoSumEqualsTarget() {
-        int numA = 1;
-        int numB = 2;
-        int resultSumAB = 3;
-
-        int numC = 3;
-        int numD = 4;
-        int resultSumCD = 5;
-
-        Solution1 solution1 = new Solution1();
-
-        assertTrue(solution1.twoSumEqualsTarget(numA, numB, resultSumAB));
-        assertFalse(solution1.twoSumEqualsTarget(numC, numD, resultSumCD));
     }
 }
