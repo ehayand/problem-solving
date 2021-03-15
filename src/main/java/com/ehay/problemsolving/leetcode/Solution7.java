@@ -1,38 +1,28 @@
 package com.ehay.problemsolving.leetcode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Solution7 {
 
-    public String reverseString(String str) {
-        return new StringBuilder(str).reverse().toString();
-    }
-
-    public String reverseIntString(String str) {
-        boolean isNegative = str.startsWith("-");
-        if(isNegative) str = str.substring(1);
-
-        char[] chars = reverseString(str).toCharArray();
-
-        StringBuilder builder = new StringBuilder();
-        boolean isZeroFill = true;
-
-        for(char c : chars) {
-            if(isZeroFill && c == '0') continue;
-            builder.append(c);
-            isZeroFill = false;
-        }
-
-        if(isNegative) builder.insert(0, "-");
-
-        return builder.toString();
-    }
-
     public int reverse(int i) {
-        String reverseIntString = reverseIntString(String.valueOf(i));
+        Queue<Integer> queue = new LinkedList<>();
 
-        try {
-            return Integer.parseInt(reverseIntString);
-        } catch (NumberFormatException e) {
-            return 0;
+        while (Math.abs(i) > 0) {
+            int current = i % 10;
+            i = i / 10;
+            queue.add(current);
         }
+
+        double resultDouble = 0;
+
+        while (!queue.isEmpty()) {
+            int current = queue.remove();
+            resultDouble = resultDouble * 10 + current;
+        }
+
+        if (Math.abs(resultDouble) > Math.pow(2, 31)) return 0;
+
+        return (int) resultDouble;
     }
 }
